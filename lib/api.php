@@ -55,6 +55,14 @@
 	$mail->addAddress('vorstand@piratenpartei-hessen.de');
 	$mail->addAddress('datenschutzbeauftragter@piratenpartei-hessen.de');
 
+	$mail->SMTPOptions = array(
+		'ssl' => array(
+			'verify_peer' => false,
+			'verify_peer_name' => false,
+			'allow_self_signed' => true
+		)
+	;
+
 	$mail->isHTML(false);
 	$mail->Subject = $_POST["title"];
 	foreach($_POST as $key => $value) {
