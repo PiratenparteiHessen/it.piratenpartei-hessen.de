@@ -1,7 +1,9 @@
 <?php
 
 	// debug
-	define("DEBUG", false);
+	define("DEBUG", false);		// debug output
+	define("TESTING", true);	// test email
+	define("LIVE", true);		// live email
 
 	// check ajax
 	define('IS_AJAX', isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
@@ -51,9 +53,10 @@
 	$mail->SetFrom($_POST[$label."-email"], $_POST[$label."-vorname"]." ".$_POST[$label."-nachname"], FALSE);
 	$mail->AddReplyTo($_POST[$label."-email"], $_POST[$label."-vorname"]." ".$_POST[$label."-nachname"]);
 
-	$mail->addAddress('it@piratenpartei-hessen.de');  
-	$mail->addAddress('vorstand@piratenpartei-hessen.de');
-	$mail->addAddress('datenschutzbeauftragter@piratenpartei-hessen.de');
+	if (TESTING && !LIVE) $mail->addAddress('nowrap@gmx.net');  
+	if (!TESTING && LIVE) $mail->addAddress('it@piratenpartei-hessen.de');  
+	if (TESTING && LIVE) $mail->addAddress('vorstand@piratenpartei-hessen.de');
+	if (TESTING && LIVE) $mail->addAddress('datenschutzbeauftragter@piratenpartei-hessen.de');
 
 	$mail->SMTPOptions = array(
 		'ssl' => array(
@@ -61,7 +64,7 @@
 			'verify_peer_name' => false,
 			'allow_self_signed' => true
 		)
-	;
+	);
 
 	$mail->isHTML(false);
 	$mail->Subject = $_POST["title"];

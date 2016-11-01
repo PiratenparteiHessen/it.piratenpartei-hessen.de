@@ -181,14 +181,16 @@ $('form').validator().on('submit', function (e) {
 			debug.log("success");
 			debug.log(data);
 			$('#loading-modal').find("button").removeAttr("disabled");
-			if (!data.success) {
+			if (data.success) {
+				/*/debug.log(data.message.trim());
+				debug.log(!data.message.trim());/**/
 				if (!data.message.trim()) {
-					$('#loading_spinner_center').replaceWith('<div class="alert alert-warning" role="alert"><p>Debug:</p><pre>'+data.message+'</pre></div>');
+					$('#loading_spinner_center').replaceWith('<div class="alert alert-success" role="alert"><p>Das Formular wurde erfolgreich übermittelt.</p><p>Zurück zu Startseite</p></div>');
 				} else {
-					$('#loading_spinner_center').replaceWith('<div class="alert alert-warning" role="alert"><p>Das Formular wurde erfolgreich übermittelt.</p><p>Zurück zu Startseite</p></div>');
+					$('#loading_spinner_center').replaceWith('<div class="alert alert-warning" role="alert"><p>Debug:</p><pre>'+data.message+'</pre></div>');
 				}
 			} else {
-				$('#loading_spinner_center').replaceWith('<div class="alert alert-success" role="alert"><p>Es ist folgender Fehler aufgetreten:<br />'+data.message+'</p><p>Zurück zu Startseite</p></div>');
+				$('#loading_spinner_center').replaceWith('<div class="alert alert-warning" role="alert"><p>Es ist folgender Fehler aufgetreten:<br />'+data.message+'</p><p>Zurück zu Startseite</p></div>');
 			}
 		}).fail(function() {
 			debug.log("error");
