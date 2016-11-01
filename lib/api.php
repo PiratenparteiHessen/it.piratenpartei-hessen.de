@@ -54,7 +54,7 @@
 	$mail->AddReplyTo($_POST[$label."-email"], $_POST[$label."-vorname"]." ".$_POST[$label."-nachname"]);
 
 	if (TESTING && !LIVE) $mail->addAddress('nowrap@gmx.net');  
-	if (!TESTING && LIVE) $mail->addAddress('it@piratenpartei-hessen.de');  
+	if (LIVE) $mail->addAddress('it@piratenpartei-hessen.de');  
 	if (TESTING && LIVE) $mail->addAddress('vorstand@piratenpartei-hessen.de');
 	if (TESTING && LIVE) $mail->addAddress('datenschutzbeauftragter@piratenpartei-hessen.de');
 
