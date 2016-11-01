@@ -1,0 +1,22 @@
+Hallo Hessen-IT,
+
+es wurde folgendes Formular eingereicht:
+%%title%%
+
+Datum:   %%datum%%
+Uhrzeit: %%uhrzeit%%
+
+Vorname:         %%antrag-email-vorname%%
+Nachname:        %%antrag-email-nachname%%
+E-Mail:          %%antrag-email-email%%
+
+Mitgliedsnummer: %%antrag-email-mitgliedsnummer%%
+
+Nutzungsbedingungen:  %%antrag-email-nb%%
+Datenschutzerklärung: %%antrag-email-dse%%
+
+Anmerkung:
+%%antrag-email-anmerkung%%
+
+Viele Grüße
+it.piratenpartei-hessen.de

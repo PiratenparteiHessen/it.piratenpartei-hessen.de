@@ -1,0 +1,24 @@
+Hallo Hessen-IT,
+
+es wurde folgendes Formular eingereicht:
+%%title%%
+
+Datum:   %%datum%%
+Uhrzeit: %%uhrzeit%%
+
+Vorname:            %%antrag-mailinglisten-moderation-vorname%%
+Nachname:           %%antrag-mailinglisten-moderation-nachname%%
+E-Mail:             %%antrag-mailinglisten-moderation-email%%
+
+Mailingliste:       %%antrag-mailinglisten-moderation-mailingliste%%
+Personenkreis:      %%antrag-mailinglisten-moderation-personenkreis%%
+Moderations-E-Mail: %%antrag-mailinglisten-moderation-mod-email%%
+
+Nutzungsbedingungen:  %%antrag-mailinglisten-moderation-nb%%
+Datenschutzerklärung: %%antrag-mailinglisten-moderation-dse%%
+
+Anmerkung:
+%%antrag-mailinglisten-moderation-anmerkung%%
+
+Viele Grüße
+it.piratenpartei-hessen.de

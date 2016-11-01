@@ -1,0 +1,20 @@
+Hallo Hessen-IT,
+
+es wurde folgendes Formular eingereicht:
+%%title%%
+
+Datum:   %%datum%%
+Uhrzeit: %%uhrzeit%%
+
+Vorname:  %%antrag-owncloud-vorname%%
+Nachname: %%antrag-owncloud-nachname%%
+E-Mail:   %%antrag-owncloud-email%%
+
+Nutzungsbedingungen:  %%antrag-owncloud-nb%%
+Datenschutzerklärung: %%antrag-owncloud-dse%%
+
+Anmerkung:
+%%antrag-owncloud-anmerkung%%
+
+Viele Grüße
+it.piratenpartei-hessen.de

@@ -1,0 +1,23 @@
+Hallo Hessen-IT,
+
+es wurde folgendes Formular eingereicht:
+%%title%%
+
+Datum:   %%datum%%
+Uhrzeit: %%uhrzeit%%
+
+Vorname:       %%antrag-mailingliste-vorname%%
+Nachname:      %%antrag-mailingliste-nachname%%
+E-Mail:        %%antrag-mailingliste-email%%
+
+Mailingliste:  %%antrag-mailingliste-mailingliste%%
+Personenkreis: %%antrag-mailingliste-personenkreis%%
+
+Nutzungsbedingungen:  %%antrag-mailingliste-nb%%
+Datenschutzerklärung: %%antrag-mailingliste-dse%%
+
+Anmerkung:
+%%antrag-mailingliste-anmerkung%%
+
+Viele Grüße
+it.piratenpartei-hessen.de

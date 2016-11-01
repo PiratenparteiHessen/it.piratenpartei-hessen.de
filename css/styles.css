@@ -1,0 +1,35 @@
+body {
+	position: relative;
+	padding: 70px 0;
+}
+
+.navbar-brand {
+	padding: 5px 5px !important;
+}
+
+.panel-heading {
+	font-weight: 700;
+	font-size: larger;
+}
+
+div.tab-pane a {
+	color: #FF8800;
+}
+div.tab-pane a:hover,
+div.tab-pane a:focus {
+	color: #BF6600;
+}
+
+.form-control:focus {
+	border-color: #FF8800;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 136, 0, 0.6);
+}
+
+.btn-primary.btn-file {
+	background-color: #FF8800;
+	border-color: #FF8800;
+}
+.btn-primary.btn-file:hover {
+	background-color: #BF6600;
+	border-color: #BF6600;
+}

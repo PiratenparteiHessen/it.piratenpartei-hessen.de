@@ -1,0 +1,22 @@
+Hallo Hessen-IT,
+
+es wurde folgendes Formular eingereicht:
+%%title%%
+
+Datum:   %%datum%%
+Uhrzeit: %%uhrzeit%%
+
+Vorname:  %%antrag-mailinglisten-schreibrechte-vorname%%
+Nachname: %%antrag-mailinglisten-schreibrechte-nachname%%
+E-Mail:   %%antrag-mailinglisten-schreibrechte-email%%
+
+Nachweis: %%antrag-mailinglisten-schreibrechte-nachweis%%
+
+Nutzungsbedingungen:  %%antrag-mailinglisten-schreibrechte-nb%%
+Datenschutzerklärung: %%antrag-mailinglisten-schreibrechte-dse%%
+
+Anmerkung:
+%%antrag-mailinglisten-schreibrechte-anmerkung%%
+
+Viele Grüße
+it.piratenpartei-hessen.de
