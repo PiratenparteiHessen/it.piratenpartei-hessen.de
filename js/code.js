@@ -1,4 +1,8 @@
+var error_global = false;
+var form_global =  {};
+
 $(document).ready(function() {
+	debug.log("ready");
 	var ts = Math.round((new Date()).getTime() / 1000);
 	var url = "https://www.piratenpartei-hessen.de/stats.xml.php?_="+ts;
 
@@ -17,31 +21,16 @@ $(document).ready(function() {
 		});
 	});
 
-	var opts = {
-		lines: 13, // The number of lines to draw
-		length: 20, // The length of each line
-		width: 10, // The line thickness
-		radius: 30, // The radius of the inner circle
-		corners: 1, // Corner roundness (0..1)
-		rotate: 0, // The rotation offset
-		direction: 1, // 1: clockwise, -1: counterclockwise
-		color: '#000', // #rgb or #rrggbb or array of colors
-		speed: 1, // Rounds per second
-		trail: 60, // Afterglow percentage
-		shadow: false, // Whether to render a shadow
-		hwaccel: false, // Whether to use hardware acceleration
-		className: 'spinner', // The CSS class to assign to the spinner
-		zIndex: 2e9, // The z-index (defaults to 2000000000)
-		top: 'auto', // Top position relative to parent in px
-		left:'auto' // Left position relative to parent in px
-	};
+	initSpinner();
 
-	var target = document.getElementById('loading_spinner_center');
-	var spinner = new Spinner(opts).spin(target);
-	
 	$('#loading-modal').on('hidden.bs.modal', function (e) {
-		debug.log("reload");
-		location.reload();
+		debug.log("modal closing", error_global);
+		if (error_global) {
+			
+		} else {
+			debug.log("reload");
+			location.reload();
+		}
 	});
 });
 
@@ -131,7 +120,7 @@ $("input:file").fileinput({
 	language: 'de'
 });
 
-$('form').validator().on('submit', function (e) {
+$('form').validator().on('submit', function(e) {
 	if (e.isDefaultPrevented()) {
 		// handle the invalid form...
 		debug.log("error");
@@ -145,31 +134,29 @@ $('form').validator().on('submit', function (e) {
 		e.preventDefault();
 
 		var id = e.currentTarget.id;
-		//debug.log(id);
+		debug.log("id", id);
 
 		var name = id;
 		name = name.replace("-form", "");
+		debug.log("name", name);
 
 		var data = new FormData();
-		$(this).find(":input").each(function(index, input) {
-			if (input.id.indexOf(name) !== -1) {
-				/*/debug.log(input);
-				debug.log($(input));/**/
-				//debug.log(input.type);
-				if (input.type == "file") {
-					data.append(input.id, input.files[0]);
-				} else {
-					data.append(input.id, $(input).val());
-				}
-			}
-		});
-		data.append("csrf_token", token);
+		addFormData(this, data, name);
 
 		var title = $(e.currentTarget).closest("div.panel").find("div.panel-heading").text();
 		data.append("title", title);
-		$('#loading-modal').find("div.modal-header h3").replaceWith("<h3>"+title+"</h3>");
-		$('#loading-modal').find("button").attr("disabled", "disabled");
-		$('#loading-modal').modal('show');
+		debug.log("title", title);
+		debugFormData(data);
+
+		prepareModal(title);
+		initSpinner();
+
+		form_global = {
+				"id": id,
+				"name": name,
+				"title": title
+		};
+
 		$.ajax({
 			url: 'api/'+name+"/",
 			type: 'POST',
@@ -178,26 +165,188 @@ $('form').validator().on('submit', function (e) {
 			contentType: false,
 			cache: false
 		}).done(function(data) {
-			debug.log("success");
+			debug.log("done");
 			debug.log(data);
 			$('#loading-modal').find("button").removeAttr("disabled");
 			if (data.success) {
 				/*/debug.log(data.message.trim());
 				debug.log(!data.message.trim());/**/
-				if (!data.message.trim()) {
-					$('#loading_spinner_center').replaceWith('<div class="alert alert-success" role="alert"><p>Das Formular wurde erfolgreich übermittelt.</p><p>Zurück zu Startseite</p></div>');
+				if (data.next && data.next == "code") {
+					$('#modal_ok_button').hide();
+					$('#modal_submit_button').show();
+					$('#modal_submit_button').attr("disabled", "disabled");
+
+					var html = '<div class="alert alert-success" role="alert"><p>Das Formular wurde erfolgreich übermittelt.</p></div>';
+					html += '<p>Du erhälst nun eine Bestätigungs-E-Mail und kannst entweder den Link darin klicken oder den Bestätigungs-Code direkt hier eingeben.</p>';
+					html += '<form>';
+					html += '<div class="form-group has-feedback">';
+					html += '<label for="confirmation">Bestätigungs-Code</label>';
+					html += '<div class="input-group">';
+					html += '<span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>';
+					html += '<input type="text" class="form-control" id="confirmation" placeholder="Bestätigungs-Code" required>';
+					html += '</div>';
+					html += '<div class="help-block with-errors"></div>';
+					html += '</div>';
+					html += '</form>';
 				} else {
-					$('#loading_spinner_center').replaceWith('<div class="alert alert-warning" role="alert"><p>Debug:</p><pre>'+data.message+'</pre></div>');
+					if (!data.message.trim()) {
+						var html = '<div class="alert alert-success" role="alert"><p>Das Formular wurde erfolgreich übermittelt.</p></div>';
+						html += '<p>Zurück zur Startseite</p>';
+					} else {
+						var html = '<div class="alert alert-warning" role="alert"><p>Debug:</p><pre>'+data.message+'</pre></div>';
+					}
 				}
+				debug.log(html);
+
+				error_global = false;
+				debug.log("error_global", error_global);
+				$('#loading_spinner_center').replaceWith(html);
 			} else {
-				$('#loading_spinner_center').replaceWith('<div class="alert alert-warning" role="alert"><p>Es ist folgender Fehler aufgetreten:<br />'+data.message+'</p><p>Zurück zu Startseite</p></div>');
+				error_global = true;
+				debug.log("error_global", error_global);
+				$('#loading_spinner_center').replaceWith('<div class="alert alert-warning" role="alert"><p>Es ist folgender Fehler aufgetreten:<br />'+data.message+'</p></div><p>Zurück zum Formular</p>');
 			}
 		}).fail(function() {
-			debug.log("error");
+			debug.log("fail");
+			error_global = true;
+			debug.log("error_global", error_global);
 			$('#loading-modal').find("button").removeAttr("disabled");
-			$('#loading_spinner_center').replaceWith('<div class="alert alert-danger" role="alert">Es ist ein Fehler aufgetreten</div>');
-		}).always(function() {
-			debug.log("complete");
+			$('#loading_spinner_center').replaceWith('<div class="alert alert-danger" role="alert">Es ist ein Fehler aufgetreten</div><p>Zurück zum Formular</p>');
+		}).always(function(data) {
+			debug.log("always");
+			debug.log(data);
+
+			if (data.token) {
+				token_global = data.token;
+				debug.log("token", token_global);
+			}
 		});
 	}
+
+	$('#modal_submit_button').off('click').on('click', function(e) {
+		e.preventDefault();
+		debug.log("click");
+		debug.log(form_global);
+
+		var form = $(e.currentTarget).closest("div.modal-content").find("form");
+		debug.log(form);
+
+		var data = new FormData();
+		addFormData(form, data, "confirmation");
+		debugFormData(data);
+
+		prepareModal(form_global.title);
+		initSpinner();
+
+		$.ajax({
+			url: 'api/'+form_global.name+"/",
+			type: 'POST',
+			data: data,
+			processData: false,
+			contentType: false,
+			cache: false
+		}).done(function(data) {
+			debug.log("done");
+			debug.log(data);
+			$('#loading-modal').find("button").removeAttr("disabled");
+			
+			if (data.success) {
+				if (!data.message.trim()) {
+					var html = '<div class="alert alert-success" role="alert"><p>Das Formular wurde erfolgreich übermittelt.</p></div>';
+					if (data.recipient == "mv") {
+						html += '<p>Du erhälst nun eine Bestätigungs-E-Mail vom Ticketsystem der hessischen Mitgliederverwaltung.</p>'
+					} else {
+						html += '<p>Du erhälst nun eine Bestätigungs-E-Mail vom Ticketsystem der Hessen-IT.</p>'
+					}
+					html += '<p>Zurück zur Startseite</p>';
+				} else {
+					var html = '<div class="alert alert-warning" role="alert"><p>Debug:</p><pre>'+data.message+'</pre></div>';
+				}
+				debug.log(html);
+
+				error_global = false;
+				debug.log("error_global", error_global);
+				$('#loading_spinner_center').replaceWith(html);
+			} else {
+				error_global = true;
+				debug.log("error_global", error_global);
+				$('#loading_spinner_center').replaceWith('<div class="alert alert-warning" role="alert"><p>Es ist folgender Fehler aufgetreten:<br />'+data.message+'</p></div><p>Zurück zum Formular</p>');
+			}
+		}).fail(function() {
+			debug.log("fail");
+			error_global = true;
+			debug.log("error_global", error_global);
+			$('#loading-modal').find("button").removeAttr("disabled");
+			$('#loading_spinner_center').replaceWith('<div class="alert alert-danger" role="alert">Es ist ein Fehler aufgetreten</div><p>Zurück zum Formular</p>');/**/
+		}).always(function(data) {
+			debug.log("always");
+			debug.log(data);
+
+			if (data.token) {
+				token_global = data.token;
+				debug.log("token", token_global);
+			}
+		});
+	});
+
+	$('#loading-modal').on('input propertychange', '#confirmation', function() {
+		debug.log("change", this, $(this).val());
+		//if (this)
+		$('#modal_submit_button').removeAttr("disabled");
+	});
 });
+
+function addFormData(elem, data, name) {
+	$(elem).find(":input").each(function(index, input) {
+		if (input.id.indexOf(name) !== -1) {
+			/*/debug.log(input);
+			debug.log($(input));/**/
+			//debug.log(input.type);
+			if (input.type == "file") {
+				data.append(input.id, input.files[0]);
+			} else {
+				data.append(input.id, $(input).val());
+			}
+		}
+	});
+	data.append("csrf_token", token_global);
+}
+
+function debugFormData(data) {
+	for(var pair of data.entries()) {
+		debug.log(pair[0]+ ', '+ pair[1]); 
+	}
+}
+
+function prepareModal(title) {
+	$('#modal_ok_button').show();
+	$('#modal_submit_button').hide();
+	$('#loading-modal').find("div.modal-header h3").replaceWith("<h3>"+title+"</h3>");
+	$('#loading-modal').find("div.modal-body").replaceWith('<div class="modal-body"><div style="min-height: 100px"><span id="loading_spinner_center" style="position: absolute;display: block;top: 50%;left: 50%;"></span></div></div>');
+	$('#loading-modal').find("button").attr("disabled", "disabled");
+	$('#loading-modal').modal('show');
+}
+
+function initSpinner() {
+	var opts = {
+		lines: 13, // The number of lines to draw
+		length: 20, // The length of each line
+		width: 10, // The line thickness
+		radius: 30, // The radius of the inner circle
+		corners: 1, // Corner roundness (0..1)
+		rotate: 0, // The rotation offset
+		direction: 1, // 1: clockwise, -1: counterclockwise
+		color: '#000', // #rgb or #rrggbb or array of colors
+		speed: 1, // Rounds per second
+		trail: 60, // Afterglow percentage
+		shadow: false, // Whether to render a shadow
+		hwaccel: false, // Whether to use hardware acceleration
+		className: 'spinner', // The CSS class to assign to the spinner
+		zIndex: 2e9, // The z-index (defaults to 2000000000)
+		top: 'auto', // Top position relative to parent in px
+		left:'auto' // Left position relative to parent in px
+	};
+
+	var target = document.getElementById('loading_spinner_center');
+	var spinner = new Spinner(opts).spin(target);
+}

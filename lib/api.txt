@@ -1,0 +1,18 @@
+Hallo %%vorname%% %%nachname%%,
+
+es wurde folgendes Formular eingereicht:
+%%title%%
+
+Datum:   %%datum%%
+Uhrzeit: %%uhrzeit%%
+
+Bestätige uns Dein Anliegen bitte per Klick auf den Bestätigungs-Link oder durch direkte Eingabe des Bestätigungs-Codes:
+
+Bestätigungs-Link:
+%%link%%
+
+Bestätigungs-Code:
+%%code%%
+
+Viele Grüße
+it.piratenpartei-hessen.de

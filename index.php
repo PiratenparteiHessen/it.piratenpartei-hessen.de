@@ -10,6 +10,20 @@
 	NoCSRF::enableOriginCheck();
 	$token = NoCSRF::generate('csrf_token');
 
+	// confirmation code
+	if (!isset($_SESSION["cc"])) {
+		$start = rand(0, 32-6);
+		$cc = substr(md5(uniqid(rand(), true)), $start, 6);
+		$_SESSION["cc"] = $cc;
+	}
+	#unset($_SESSION["cc"]);
+
+	// captcha
+	$_SESSION["captcha"] = array(
+		"math_1" => rand(1, 20),
+		"math_2" => rand(1, 20),
+	);
+
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -39,7 +53,7 @@
 	</head>
 
 	<body data-spy="scroll" data-target="#bs-hessen-it-mainnav">
-  
+
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
@@ -72,7 +86,7 @@
 							</ul>
 						</li>
 					</ul>
-      
+
 					<ul class="nav navbar-nav navbar-right">
 						<li><a id="todos" href="https://jira.piratenpartei-hessen.de/plugins/servlet/shareYourJira/showFilter?&token=abc75366-8b12-4e83-8e3a-3b41f3a3d48f&id=2" target="_blank">Todos <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a></li>
 						<li id="kontakt-box" class="dropdown">
@@ -135,6 +149,15 @@
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
 										<input type="number" class="form-control" id="antrag-email-mitgliedsnummer" placeholder="Mitgliedsnummer" required>
+									</div>
+									<div class="help-block with-errors"></div>
+								</div>
+								<div class="form-group has-feedback">
+									<label for="antrag-email-captcha">Mathematisches Rätsel</label>
+									<p>Bitte addiere <?php echo $_SESSION["captcha"]["math_1"]; ?> und <?php echo $_SESSION["captcha"]["math_2"]; ?>.</p>
+									<div class="input-group">
+										<span class="input-group-addon"><i class="glyphicon glyphicon-question-sign"></i></span>
+										<input type="number" class="form-control" id="antrag-email-captcha" placeholder="Summe" required>
 									</div>
 									<div class="help-block with-errors"></div>
 								</div>
@@ -233,6 +256,15 @@
 											<option>Projektgruppe</option>
 											<option>Untergliederung</option>
 										</select>
+									</div>
+									<div class="help-block with-errors"></div>
+								</div>
+								<div class="form-group has-feedback">
+									<label for="antrag-mailingliste-captcha">Mathematisches Rätsel</label>
+									<p>Bitte addiere <?php echo $_SESSION["captcha"]["math_1"]; ?> und <?php echo $_SESSION["captcha"]["math_2"]; ?>.</p>
+									<div class="input-group">
+										<span class="input-group-addon"><i class="glyphicon glyphicon-question-sign"></i></span>
+										<input type="number" class="form-control" id="antrag-mailingliste-captcha" placeholder="Summe" required>
 									</div>
 									<div class="help-block with-errors"></div>
 								</div>
@@ -344,6 +376,15 @@
 									<div class="help-block with-errors"></div>
 								</div>
 								<div class="form-group has-feedback">
+									<label for="antrag-mailinglisten-moderation-captcha">Mathematisches Rätsel</label>
+									<p>Bitte addiere <?php echo $_SESSION["captcha"]["math_1"]; ?> und <?php echo $_SESSION["captcha"]["math_2"]; ?>.</p>
+									<div class="input-group">
+										<span class="input-group-addon"><i class="glyphicon glyphicon-question-sign"></i></span>
+										<input type="number" class="form-control" id="antrag-mailinglisten-moderation-captcha" placeholder="Summe" required>
+									</div>
+									<div class="help-block with-errors"></div>
+								</div>
+								<div class="form-group has-feedback">
 									<div class="checkbox">
 										<label>
 											<input type="checkbox" value="akzeptiert" id="antrag-mailinglisten-moderation-nb" required> Die <a href="https://lists.piratenpartei-hessen.de/nutzungsbedingungen/" target="_blank">Nutzungsbedingungen Mail-Server <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a> habe ich gelesen und akzeptiere diese
@@ -437,6 +478,15 @@
 									<span id="antrag-mailinglisten-schreibrechte-nachweis-help" class="help-block">Es ist ein Nachweis zu erbringen, z.B. ein Link zum entsprechenden Protokoll, zur Web- oder Wiki-Seite oder im Falle der Mitgliederliste eine @piratenpartei-hessen.de-E-Mail-Adresse.</span>
 								</div>
 								<div class="form-group has-feedback">
+									<label for="antrag-mailinglisten-schreibrechte-captcha">Mathematisches Rätsel</label>
+									<p>Bitte addiere <?php echo $_SESSION["captcha"]["math_1"]; ?> und <?php echo $_SESSION["captcha"]["math_2"]; ?>.</p>
+									<div class="input-group">
+										<span class="input-group-addon"><i class="glyphicon glyphicon-question-sign"></i></span>
+										<input type="number" class="form-control" id="antrag-mailinglisten-schreibrechte-captcha" placeholder="Summe" required>
+									</div>
+									<div class="help-block with-errors"></div>
+								</div>
+								<div class="form-group has-feedback">
 									<div class="checkbox">
 										<label>
 											<input type="checkbox" value="akzeptiert" id="antrag-mailinglisten-schreibrechte-nb" required> Die <a href="https://lists.piratenpartei-hessen.de/nutzungsbedingungen/" target="_blank">Nutzungsbedingungen Mail-Server <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a> habe ich gelesen und akzeptiere diese
@@ -503,6 +553,15 @@
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
 										<input type="email" class="form-control" id="antrag-owncloud-email" placeholder="E-Mail" required>
+									</div>
+									<div class="help-block with-errors"></div>
+								</div>
+								<div class="form-group has-feedback">
+									<label for="antrag-owncloud-captcha">Mathematisches Rätsel</label>
+									<p>Bitte addiere <?php echo $_SESSION["captcha"]["math_1"]; ?> und <?php echo $_SESSION["captcha"]["math_2"]; ?>.</p>
+									<div class="input-group">
+										<span class="input-group-addon"><i class="glyphicon glyphicon-question-sign"></i></span>
+										<input type="number" class="form-control" id="antrag-owncloud-captcha" placeholder="Summe" required>
 									</div>
 									<div class="help-block with-errors"></div>
 								</div>
@@ -592,6 +651,15 @@
 									<div class="help-block with-errors"></div>
 								</div>
 								<div class="form-group has-feedback">
+									<label for="kontakt-email-captcha">Mathematisches Rätsel</label>
+									<p>Bitte addiere <?php echo $_SESSION["captcha"]["math_1"]; ?> und <?php echo $_SESSION["captcha"]["math_2"]; ?>.</p>
+									<div class="input-group">
+										<span class="input-group-addon"><i class="glyphicon glyphicon-question-sign"></i></span>
+										<input type="number" class="form-control" id="kontakt-email-captcha" placeholder="Summe" required>
+									</div>
+									<div class="help-block with-errors"></div>
+								</div>
+								<div class="form-group has-feedback">
 									<div class="checkbox">
 										<label>
 											<input type="checkbox" value="akzeptiert" id="kontakt-email-dse" required> Der Verarbeitung meiner Daten gemäß der <a href="https://www.piratenpartei-hessen.de/datenschutzerklaerung" target="_blank">Datenschutzerklärung <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a> stimme ich zu
@@ -658,7 +726,8 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal" id="modal_ok_button">Ok</button>
+						<button type="button" class="btn btn-default" id="modal_submit_button">Abschicken</button>
 					</div>
 				</div>
 			</div>
@@ -686,10 +755,10 @@
 
 		<!-- Hessen-IT -->
 		<script src="js/code.js"></script>
-		<script>var token = "<?php echo $token; ?>";</script>
+		<script>var token_global = "<?php echo $token; ?>";</script>
 	</body>
 </html>
 <?php
-	/*/print_r($_SESSION);
+	/**/print_r($_SESSION);
 	echo session_id();/**/
 ?>
