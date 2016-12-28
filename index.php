@@ -103,6 +103,24 @@
 		</nav>
 
 		<div class="tab-content">
+
+<?php
+	#print_R($_SESSION);
+	if (isset($_SESSION["mail_message"])) {
+		$panelclass = "panel-danger";
+		if ($_SESSION["mail_message"]["success"]) {
+			$panelclass = "panel-success";
+		}
+?>
+			<div id="response" class="panel <?php echo $panelclass; ?>">
+				<div class="panel-heading">Rückmeldung</div>
+				<div class="panel-body">
+					<?php echo $_SESSION["mail_message"]["message"]; ?>
+				</div>
+			</div>
+<?php
+	}
+?>
 			<div role="tabpanel" class="tab-pane active" id="home">
 				<div class="panel panel-default">
 					<div class="panel-heading">Willkommen bei der Hessen-IT der Piratenpartei Deutschland Landesverband Hessen</div>

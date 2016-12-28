@@ -1,4 +1,4 @@
-Hallo Hessen-IT,
+Ahoi Mitgliederverwaltung,
 
 es wurde folgendes Formular eingereicht:
 %%title%%
@@ -17,6 +17,8 @@ Datenschutzerklärung: %%antrag-email-dse%%
 
 Anmerkung:
 %%antrag-email-anmerkung%%
+
+Bitte bestätigt die Mitgliedschaft des antragstellenden Piraten und leitet diesen Antrag dann an it@piratenpartei-hessen.de weiter.
 
 Viele Grüße
 it.piratenpartei-hessen.de

@@ -1,4 +1,4 @@
-Hallo %%vorname%% %%nachname%%,
+Ahoi %%vorname%% %%nachname%%,
 
 es wurde folgendes Formular eingereicht:
 %%title%%

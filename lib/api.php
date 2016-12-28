@@ -1,9 +1,7 @@
 <?php
 
-	// debug
-	define("DEBUG", false);		// debug output
-	define("TESTING", true);	// test email
-	define("LIVE", true);		// live email
+	// include
+	require_once('api_lib.php');
 
 	// check ajax
 	define('IS_AJAX', isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
@@ -50,21 +48,12 @@
 	}
 
 	// mail
-	require_once('PHPMailer/PHPMailerAutoload.php');
-	$mail = new PHPMailer;
-	$mail->isSMTP();									// Set mailer to use SMTP
-	$mail->Host = 'localhost'; 							// Specify main and backup SMTP servers
+	$mail = init_mail();
 
-	$mail->isHTML(false);
-	$mail->CharSet = 'utf-8';
-	$mail->SetLanguage("de");
-
-	$mail->SMTPOptions = array(
-			'ssl' => array(
-					'verify_peer' => false,
-					'verify_peer_name' => false,
-					'allow_self_signed' => true
-			)
+	// to session
+	$_SESSION["mail_store"] = array(
+			"label"	=>	$label,
+			"body"	=>	$body,
 	);
 
 	// process confirmation
@@ -92,7 +81,12 @@
 		$body = str_replace("%%datum%%", date("d.m.Y", $time), $body);
 		$body = str_replace("%%uhrzeit%%", date("H:i:s", $time), $body);
 
-		$body = str_replace("%%link%%", "confirmation.php?id=".session_id(), $body);
+		$start = rand(0, 32-6);
+		$mc = substr(md5(uniqid(rand(), true)), $start, 6);
+		$_SESSION["mc"] = $mc;
+		$id =  $_SESSION["cc"].session_id().$mc;
+
+		$body = str_replace("%%link%%", URL."confirmation.php?id=".$id, $body);
 		$body = str_replace("%%code%%", $_SESSION["cc"], $body);
 		if (DEBUG) print_r($body);
 
@@ -107,6 +101,7 @@
 			$return["next"] = "code";
 		}
 		$return["token"] = NoCSRF::generate('csrf_token');
+		#if (TESTING) $return["server"] = $_SERVER;
 
 		echo json_encode($return);
 		/*/print_r($_SESSION);
@@ -115,11 +110,7 @@
 	}
 
 	// process
-	ob_start();
-	if (DEBUG) echo $label."\n";
-	if (DEBUG) print_r($_POST);
-	if (DEBUG) print_r($_FILES);
-	if (DEBUG) print_r($_SESSION);
+	process_step_one();
 
 	// check confirmation
 	if ($_POST["confirmation"] != $_SESSION["cc"]) {
@@ -141,41 +132,7 @@
 	}
 
 	// mail
-	$mail->Sender = 'noreply@piratenpartei-hessen.de';
-	$mail->SetFrom($_SESSION["submit"]["post"][$label."-email"], $_SESSION["submit"]["post"][$label."-vorname"]." ".$_SESSION["submit"]["post"][$label."-nachname"], FALSE);
-	$mail->AddReplyTo($_SESSION["submit"]["post"][$label."-email"], $_SESSION["submit"]["post"][$label."-vorname"]." ".$_SESSION["submit"]["post"][$label."-nachname"]);
-
-	if (TESTING && !LIVE) $mail->addAddress('nowrap@gmx.net');
-	if (LIVE) $mail->addAddress('it@piratenpartei-hessen.de');
-	if (TESTING && LIVE) $mail->addAddress('vorstand@piratenpartei-hessen.de');
-	if (TESTING && LIVE) $mail->addAddress('datenschutzbeauftragter@piratenpartei-hessen.de');
-
-	$mail->Subject = $_SESSION["submit"]["post"]["title"];
-	foreach($_SESSION["submit"]["post"] as $key => $value) {
-		$body = str_replace("%%".$key."%%", $value, $body);
-	}
-	$time = time();
-	$body = str_replace("%%datum%%", date("d.m.Y", $time), $body);
-	$body = str_replace("%%uhrzeit%%", date("H:i:s", $time), $body);
-	$mail->Body = nl2br($body);
-	$mail->AltBody = $body;
-
-	if (isset($_SESSION["submit"]["files"][$label."-pgp"]) && $_SESSION["submit"]["files"][$label."-pgp"]["error"] == 0) {
-		$mail->addAttachment($_SESSION["submit"]["files"][$label."-pgp"]["tmp_name"], $_SESSION["submit"]["files"][$label."-pgp"]["name"]);
-	}
-
-	@unlink($_SESSION["submit"]["files"][$label."-pgp"]["tmp_name"]);
-
-	if(!$mail->send()) {
-		$return["message"] = $mail->ErrorInfo;
-	} else {
-		$return["message"] = ob_get_clean();
-		$return["success"] = true;
-	}
-
-	unset($_SESSION["submit"]);
-	unset($_SESSION["cc"]);
-	unset($_SESSION["captcha"]);
+	process_step_two($return, $mail);
 
 	// return
 	$return["token"] = NoCSRF::generate('csrf_token');

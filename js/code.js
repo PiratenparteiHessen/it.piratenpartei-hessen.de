@@ -32,11 +32,20 @@ $(document).ready(function() {
 			location.reload();
 		}
 	});
+
+	var hash = document.location.hash;
+	if (hash && (hash.indexOf("#antrag") !== -1 || hash.indexOf("#kontakt") !== -1)) {
+		/*debug.log("trigger click");
+		debug.log(hash);/**/
+		$('a[href="'+hash+'"]').trigger('click');
+	}
 });
 
 $(document).click(function(e) {
+	debug.log("document click handler");
+
 	var href = $(e.target).attr('href');
-	//debug.log(href);
+	debug.log(href);
 
 	switch(href) {
 		case "#kontakt-email":
@@ -66,6 +75,14 @@ $(document).click(function(e) {
 				$("li#kontakt-footer").removeClass("active");
 			}
 			break;
+	}
+
+	if (href && (href.indexOf("#antrag") !== -1 || href.indexOf("#kontakt") !== -1)) {
+		$('#response').hide();
+		document.location.hash = href;
+		setTimeout(scrollToTop, 5);
+	} else if (href) {
+		history.pushState("", document.title, window.location.pathname);
 	}
 });
 
@@ -349,4 +366,9 @@ function initSpinner() {
 
 	var target = document.getElementById('loading_spinner_center');
 	var spinner = new Spinner(opts).spin(target);
+}
+
+function scrollToTop() {
+	debug.log("scrollToTop");
+	$(window).scrollTop(0);
 }
