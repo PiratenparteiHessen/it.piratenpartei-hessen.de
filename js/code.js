@@ -330,8 +330,9 @@ function addFormData(elem, data, name) {
 }
 
 function debugFormData(data) {
-	debug.log("debugFormData");
-	debug.log(data);
+	/**/debug.log("debugFormData");
+	debug.log(data);/**/
+	// mac safari doesn't support formdata.entries()
 	if (data.entries) {
 		for(var pair in data.entries()) {
 			debug.log(pair[0]+ ', '+ pair[1]); 
