@@ -330,7 +330,9 @@ function addFormData(elem, data, name) {
 }
 
 function debugFormData(data) {
-	for(var pair of data.entries()) {
+	debug.log("debugFormData");
+	debug.log(data);
+	for(var pair in data.entries()) {
 		debug.log(pair[0]+ ', '+ pair[1]); 
 	}
 }
