@@ -10,7 +10,8 @@ Vorname:  %%antrag-mailinglisten-schreibrechte-vorname%%
 Nachname: %%antrag-mailinglisten-schreibrechte-nachname%%
 E-Mail:   %%antrag-mailinglisten-schreibrechte-email%%
 
-Nachweis: %%antrag-mailinglisten-schreibrechte-nachweis%%
+Mailingliste: %%antrag-mailinglisten-schreibrechte-mailingliste%%
+Nachweis:     %%antrag-mailinglisten-schreibrechte-nachweis%%
 
 Nutzungsbedingungen:  %%antrag-mailinglisten-schreibrechte-nb%%
 Datenschutzerklärung: %%antrag-mailinglisten-schreibrechte-dse%%
