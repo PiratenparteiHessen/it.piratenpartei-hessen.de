@@ -38,9 +38,9 @@
 
 				if ($return["success"]) {
 					if ($_SESSION["mail_store"]["label"] == "antrag-email") {
-						$return["message"] = '<p>Du erhälst nun eine Bestätigungs-E-Mail vom Ticketsystem der hessischen Mitgliederverwaltung.</p>';
+						$return["message"] = '<p>Du erhältst nun eine Bestätigungs-E-Mail vom Ticketsystem der hessischen Mitgliederverwaltung.</p>';
 					} else {
-						$return["message"] = '<p>Du erhälst nun eine Bestätigungs-E-Mail vom Ticketsystem der Hessen-IT.</p>';
+						$return["message"] = '<p>Du erhältst nun eine Bestätigungs-E-Mail vom Ticketsystem der Hessen-IT.</p>';
 					}
 				}
 

@@ -194,7 +194,7 @@ $('form').validator().on('submit', function(e) {
 					$('#modal_submit_button').attr("disabled", "disabled");
 
 					var html = '<div class="alert alert-success" role="alert"><p>Das Formular wurde erfolgreich übermittelt.</p></div>';
-					html += '<p>Du erhälst nun eine Bestätigungs-E-Mail und kannst entweder den Link darin klicken oder den Bestätigungs-Code direkt hier eingeben.</p>';
+					html += '<p>Du erhältst nun eine Bestätigungs-E-Mail und kannst entweder den Link darin klicken oder den Bestätigungs-Code direkt hier eingeben.</p>';
 					html += '<form>';
 					html += '<div class="form-group has-feedback">';
 					html += '<label for="confirmation">Bestätigungs-Code</label>';
@@ -271,9 +271,9 @@ $('form').validator().on('submit', function(e) {
 				if (!data.message.trim()) {
 					var html = '<div class="alert alert-success" role="alert"><p>Das Formular wurde erfolgreich übermittelt.</p></div>';
 					if (data.recipient == "mv") {
-						html += '<p>Du erhälst nun eine Bestätigungs-E-Mail vom Ticketsystem der hessischen Mitgliederverwaltung.</p>'
+						html += '<p>Du erhältst nun eine Bestätigungs-E-Mail vom Ticketsystem der hessischen Mitgliederverwaltung.</p>'
 					} else {
-						html += '<p>Du erhälst nun eine Bestätigungs-E-Mail vom Ticketsystem der Hessen-IT.</p>'
+						html += '<p>Du erhältst nun eine Bestätigungs-E-Mail vom Ticketsystem der Hessen-IT.</p>'
 					}
 					html += '<p>Zurück zur Startseite</p>';
 				} else {
