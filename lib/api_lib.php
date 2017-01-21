@@ -59,7 +59,7 @@
 
 			if (TESTING && !LIVE) $mail->addAddress('nowrap@gmx.net');
 			if (LIVE && $label != "antrag-email") $mail->addAddress('it@piratenpartei-hessen.de');
-			if (LIVE && $label == "antrag-email") $mail->addAddress('mitglieder-ticket@piratenpartei-hessen.de ');
+			if (LIVE && $label == "antrag-email") $mail->addAddress('mitglieder-ticket@piratenpartei-hessen.de');
 			if (TESTING && LIVE) $mail->addAddress('vorstand@piratenpartei-hessen.de');
 			if (TESTING && LIVE) $mail->addAddress('datenschutzbeauftragter@piratenpartei-hessen.de');
 
