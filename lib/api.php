@@ -18,14 +18,14 @@
 	);
 
 	// check csrf
-	require_once('nocsrf.php');
+	require_once('nocsrf_lib.php');
 	try {
 		// Run CSRF check, on POST data, in exception mode, with a validity of 10 minutes, in one-time mode.
-		NoCSRF::check('csrf_token', $_POST, true, 60*10, false);
+		IT_NoCSRF::check('csrf_token', $_POST, true, 60*IT_NoCSRF::TIMEOUT, false);
 	} catch (Exception $e) {
 		// CSRF attack detected
 		$return["message"] = $e->getMessage();
-		$return["token"] = NoCSRF::generate('csrf_token');
+		$return["token"] = IT_NoCSRF::generate('csrf_token');
 		echo json_encode($return);
 		/*/print_r($_POST);
 		print_r($_SESSION);
@@ -39,7 +39,7 @@
 	if (!$_POST["confirmation"] && $captcha != $_SESSION["captcha"]["math_1"] + $_SESSION["captcha"]["math_2"]) {
 		// wrong
 		$return["message"] = "Das mathematische Rätsel wurde nicht korrekt gelöst.";
-		$return["token"] = NoCSRF::generate('csrf_token');
+		$return["token"] = IT_NoCSRF::generate('csrf_token');
 		echo json_encode($return);
 		/*/print_r($_POST);
 		print_r($_SESSION);
@@ -100,7 +100,7 @@
 			$return["success"] = true;
 			$return["next"] = "code";
 		}
-		$return["token"] = NoCSRF::generate('csrf_token');
+		$return["token"] = IT_NoCSRF::generate('csrf_token');
 		#if (TESTING) $return["server"] = $_SERVER;
 
 		echo json_encode($return);
@@ -116,7 +116,7 @@
 	if ($_POST["confirmation"] != $_SESSION["cc"]) {
 		// wrong
 		$return["message"] = "Der Bestätigungs-Code ist falsch.";
-		$return["token"] = NoCSRF::generate('csrf_token');
+		$return["token"] = IT_NoCSRF::generate('csrf_token');
 		echo json_encode($return);
 		/*/print_r($_POST);
 		print_r($_SESSION);
@@ -135,7 +135,7 @@
 	process_step_two($return, $mail);
 
 	// return
-	$return["token"] = NoCSRF::generate('csrf_token');
+	$return["token"] = IT_NoCSRF::generate('csrf_token');
 	$return["recipient"] = "it";
 	if ($label == "antrag-email")
 		$return["recipient"] = "mv";

@@ -4,11 +4,11 @@
 	session_start();
 
 	// Then include the NoCSRF class
-	require_once('lib/nocsrf.php');
+	require_once('lib/nocsrf_lib.php');
 
 	// Generate CSRF token to use in form hidden field
-	NoCSRF::enableOriginCheck();
-	$token = NoCSRF::generate('csrf_token');
+	IT_NoCSRF::enableOriginCheck();
+	$token = IT_NoCSRF::generate('csrf_token');
 
 	// confirmation code
 	if (!isset($_SESSION["cc"])) {
@@ -122,6 +122,7 @@
 	}
 ?>
 			<div role="tabpanel" class="tab-pane active" id="home">
+				<div class="alert alert-danger noscript" role="alert">Für das Funktionieren dieser Webseite ist JavaScript erforderlich!</div>
 				<div class="panel panel-default">
 					<div class="panel-heading">Willkommen bei der Hessen-IT der Piratenpartei Deutschland Landesverband Hessen</div>
 					<div class="panel-body">
@@ -131,6 +132,7 @@
 			</div>
 
 			<div role="tabpanel" class="tab-pane" id="antrag-email">
+				<div class="alert alert-danger noscript" role="alert">Für das Funktionieren dieser Webseite ist JavaScript erforderlich!</div>
 				<div class="panel panel-default">
 					<div class="panel-heading">Antrag auf Einrichtung einer E-Mail-Adresse</div>
 					<div class="panel-body">
@@ -220,6 +222,7 @@
 			</div>
 
 			<div role="tabpanel" class="tab-pane" id="antrag-mailingliste">
+				<div class="alert alert-danger noscript" role="alert">Für das Funktionieren dieser Webseite ist JavaScript erforderlich!</div>
 				<div class="panel panel-default">
 					<div class="panel-heading">Antrag auf Einrichtung einer Mailingliste</div>
 					<div class="panel-body">
@@ -325,6 +328,7 @@
 			</div>
 
 			<div role="tabpanel" class="tab-pane" id="antrag-mailinglisten-moderation">
+				<div class="alert alert-danger noscript" role="alert">Für das Funktionieren dieser Webseite ist JavaScript erforderlich!</div>
 				<div class="panel panel-default">
 					<div class="panel-heading">Antrag auf Einrichtung einer technische Moderation einer Mailingliste</div>
 					<div class="panel-body">
@@ -441,6 +445,7 @@
 			</div>
 
 			<div role="tabpanel" class="tab-pane" id="antrag-mailinglisten-schreibrechte">
+				<div class="alert alert-danger noscript" role="alert">Für das Funktionieren dieser Webseite ist JavaScript erforderlich!</div>
 				<div class="panel panel-default">
 					<div class="panel-heading">Antrag auf Schreibrechte auf einer besonderen Mailingliste</div>
 					<div class="panel-body">
@@ -543,6 +548,7 @@
 			</div>
 
 			<div role="tabpanel" class="tab-pane" id="antrag-owncloud">
+				<div class="alert alert-danger noscript" role="alert">Für das Funktionieren dieser Webseite ist JavaScript erforderlich!</div>
 				<div class="panel panel-default">
 					<div class="panel-heading">Antrag auf Einrichtung eines ownCloud-Kontos</div>
 					<div class="panel-body">
@@ -622,10 +628,11 @@
 			</div>
 
 			<div role="tabpanel" class="tab-pane" id="kontakt-email">
+				<div class="alert alert-danger noscript" role="alert">Für das Funktionieren dieser Webseite ist JavaScript erforderlich!</div>
 				<div class="panel panel-default">
 					<div class="panel-heading">Kontakt zur Hessen-IT</div>
 					<div class="panel-body">
-						<p>Uns erreichst du entweder über das nachfolgende Formular oder direkt per E-Mail unter <a href="mailto:it@piratenpartei-hessen.de">it@piratenpartei-hessen.de</a> (PGP: <a href="pgp/Piratenpartei_Hessen_IT_2015-2016_it@piratenpartei-hessen.de_(0x82DBD9AC)_pub.asc" target="_blank">ID 0x82DBD9AC</a>, Fingerprint 8C8E CD89 E391 75DA A1EF 924A 2B96 6264 82DB D9AC) und <a href="https://twitter.com/HessenIT">Twitter <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>.</p>
+						<p>Uns erreichst du entweder über das nachfolgende Formular oder direkt per E-Mail unter <a href="mailto:it@piratenpartei-hessen.de">it@piratenpartei-hessen.de</a> (PGP: <a href="pgp/Piratenpartei_Hessen_IT_2017-2018_it@piratenpartei-hessen.de_(0x1DC5B298)_pub.asc" target="_blank">ID 0x1DC5B298</a>, Fingerprint 31AE 3E9E F558 F2DB 0EF5 DB23 BC51 4C2A 1DC5 B298) und <a href="https://twitter.com/HessenIT">Twitter <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>.</p>
 						<p>
 							<form data-toggle="validator" role="form" id="kontakt-email-form">
 								<div class="form-group has-feedback">

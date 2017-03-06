@@ -3,8 +3,11 @@ var form_global =  {};
 
 $(document).ready(function() {
 	debug.log("ready");
+
 	var ts = Math.round((new Date()).getTime() / 1000);
 	var url = "https://www.piratenpartei-hessen.de/stats.xml.php?_="+ts;
+
+	$(".noscript").hide();
 
 	$.get(url, function(ml) {
 		//debug.log(ml);
