@@ -592,7 +592,7 @@
 								<div class="form-group has-feedback">
 									<div class="checkbox">
 										<label>
-											<input type="checkbox" value="akzeptiert" id="antrag-owncloud-nb" required> Die <a href="https://owncloud.piratenpartei-hessen.de/apps/disclaimer/pdf/disclaimer.pdf" target="_blank">Nutzungsbedingungen ownCloud <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a> habe ich gelesen und akzeptiere diese
+											<input type="checkbox" value="akzeptiert" id="antrag-owncloud-nb" required> Die <a href="https://owncloud.piratenpartei-hessen.de/apps/agreedisclaimer/pdf/disclaimer_de.pdf" target="_blank">Nutzungsbedingungen ownCloud <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a> habe ich gelesen und akzeptiere diese
 										</label>
 									</div>
 									<div class="help-block with-errors"></div>
