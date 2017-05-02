@@ -450,7 +450,8 @@
 					<div class="panel-heading">Antrag auf Schreibrechte auf einer besonderen Mailingliste</div>
 					<div class="panel-body">
 						<p>Nach Beschluss des <a href="https://wiki.piratenpartei.de/HE:Landesparteitage/2015.2/Protokoll">Landesparteitages 2015.2 (3./4.10.2015) <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a> gibt es eine Reihe von besonderen Listen, für die es nicht automatisch eine Schreibberechtigung gibt.</p>
-						<p>Falls Du Schreibrechte wünscht, fülle einfach das nachfolgende Formular aus und schicke es ab:</p>
+						<p>Falls Du Schreibrechte wünscht, fülle einfach das nachfolgende Formular aus und schicke es ab.</p>
+						<p>Voraussetzung dafür ist natürlich ein bestehendes Abonnement der jeweiligen Mailingliste!</p>
 						<p>
 							<form data-toggle="validator" role="form" id="antrag-mailinglisten-schreibrechte-form">
 								<div class="form-group has-feedback">
