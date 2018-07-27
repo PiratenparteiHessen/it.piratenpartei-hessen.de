@@ -633,7 +633,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Kontakt zur Hessen-IT</div>
 					<div class="panel-body">
-						<p>Uns erreichst du entweder über das nachfolgende Formular oder direkt per E-Mail unter <a href="mailto:it@piratenpartei-hessen.de">it@piratenpartei-hessen.de</a> (PGP: <a href="pgp/Piratenpartei_Hessen_IT_2017-2018_it@piratenpartei-hessen.de_(0x1DC5B298)_pub.asc" target="_blank">ID 0x1DC5B298</a>, Fingerprint 31AE 3E9E F558 F2DB 0EF5 DB23 BC51 4C2A 1DC5 B298) und <a href="https://twitter.com/HessenIT">Twitter <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>.</p>
+						<p>Uns erreichst du entweder über das nachfolgende Formular oder direkt per E-Mail unter <a href="mailto:it@piratenpartei-hessen.de">it@piratenpartei-hessen.de</a> (PGP: <a href="pgp/Piratenpartei_Hessen_IT_2018-2019_it@piratenpartei-hessen.de_(0x540E3728)_pub.asc" target="_blank">ID 0x540E3728</a>, Fingerprint 80CA B9A6 E684 2AB1 0614 14A9 3B29 2A7A 540E 3728) und <a href="https://twitter.com/HessenIT">Twitter <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>.</p>
 						<p>
 							<form data-toggle="validator" role="form" id="kontakt-email-form">
 								<div class="form-group has-feedback">
