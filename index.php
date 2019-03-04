@@ -637,8 +637,8 @@
                         <p>
                             <div class="alert alert-warning" role="alert">
                                 <b>PGP-Verschlüsselung</b>
-                                <p>Bitte beachte, dass das weder das Ticketsystem noch der Webmailer mit der neuen Art der Header-Verschlüsselung (Betreff verschlüsseln / Memory Hole) umgehen kann!</p>
-                                <p>Diese PGP-Variante ist auch nocht nicht wirklich <a href="https://www.privacy-handbuch.de/handbuch_32w.htm" target="_blank">standartisiert oder weit verbreitet <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>.</p>
+                                <p>Bitte beachte, daß weder das Ticketsystem noch der Webmailer mit der neuen Art der Header-Verschlüsselung (Betreff verschlüsseln / Memory Hole) umgehen können!</p>
+                                <p>Diese PGP-Variante ist auch nocht nicht wirklich <a href="https://www.privacy-handbuch.de/handbuch_32w.htm" target="_blank">standardisiert oder weit verbreitet <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>.</p>
                             </div>
                         </p>
                         <p>
