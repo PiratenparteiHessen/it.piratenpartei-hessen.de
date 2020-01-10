@@ -82,7 +82,7 @@
                                 <li><a href="#antrag-mailinglisten-moderation" data-toggle="tab">Mailinglisten-Moderation</a></li>
                                 <li><a href="#antrag-mailinglisten-schreibrechte" data-toggle="tab">Mailinglisten-Schreibrechte</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#antrag-owncloud" data-toggle="tab">ownCloud-Konto</a></li>
+                                <li><a href="#antrag-owncloud" data-toggle="tab">nextCloud-Konto</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -551,9 +551,9 @@
             <div role="tabpanel" class="tab-pane" id="antrag-owncloud">
                 <div class="alert alert-danger noscript" role="alert">Für das Funktionieren dieser Webseite ist JavaScript erforderlich!</div>
                 <div class="panel panel-default">
-                    <div class="panel-heading">Antrag auf Einrichtung eines ownCloud-Kontos</div>
+                    <div class="panel-heading">Antrag auf Einrichtung eines nextCloud-Kontos</div>
                     <div class="panel-body">
-                        <p>Nach Beschluss des <a href="https://wiki.piratenpartei.de/HE:Landesparteitage/2015.2/Protokoll">Landesparteitages 2015.2 (3./4.10.2015) <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a> kann jedes hessische Parteimitglied mit einer @piratenpartei-hessen.de-E-Mail-Adresse ein ownCloud-Konto beantragen.</p>
+                        <p>Nach Beschluss des <a href="https://wiki.piratenpartei.de/HE:Landesparteitage/2015.2/Protokoll">Landesparteitages 2015.2 (3./4.10.2015) <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a> kann jedes hessische Parteimitglied mit einer @piratenpartei-hessen.de-E-Mail-Adresse ein nextCloud-Konto beantragen.</p>
                         <p>Fülle dazu einfach das nachfolgende Formular aus und schicke es ab:</p>
                         <p>
                             <form data-toggle="validator" role="form" id="antrag-owncloud-form">
@@ -593,7 +593,7 @@
                                 <div class="form-group has-feedback">
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" value="akzeptiert" id="antrag-owncloud-nb" required> Die <a href="https://owncloud.piratenpartei-hessen.de/apps/agreedisclaimer/pdf/disclaimer_de.pdf" target="_blank">Nutzungsbedingungen ownCloud <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a> habe ich gelesen und akzeptiere diese
+                                            <input type="checkbox" value="akzeptiert" id="antrag-owncloud-nb" required> Die <a href="https://owncloud.piratenpartei-hessen.de/apps/agreedisclaimer/pdf/disclaimer_de.pdf" target="_blank">Nutzungsbedingungen nextCloud <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a> habe ich gelesen und akzeptiere diese
                                         </label>
                                     </div>
                                     <div class="help-block with-errors"></div>
@@ -633,7 +633,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Kontakt zur Hessen-IT</div>
                     <div class="panel-body">
-                        <p>Uns erreichst du entweder über das nachfolgende Formular oder direkt per E-Mail unter <a href="mailto:it@piratenpartei-hessen.de">it@piratenpartei-hessen.de</a> (PGP: <a href="pgp/Piratenpartei_Hessen_IT_2018-2019_it@piratenpartei-hessen.de_(0x540E3728)_pub.asc" target="_blank">ID 0x540E3728</a>, Fingerprint 80CA B9A6 E684 2AB1 0614 14A9 3B29 2A7A 540E 3728) und <a href="https://twitter.com/HessenIT">Twitter <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>.</p>
+                        <p>Uns erreichst du entweder über das nachfolgende Formular oder direkt per E-Mail unter <a href="mailto:it@piratenpartei-hessen.de">it@piratenpartei-hessen.de</a> (PGP: <a href="pgp/Piratenpartei_Hessen_IT_2020-2021_it@piratenpartei-hessen.de_(0x1802E4E3)_pub.asc" target="_blank">ID 0x1802E4E3</a>, Fingerprint B76F 4FFE D422 ED8D 4093 CEEF 301B 74F3 1802 E4E3) und <a href="https://twitter.com/HessenIT">Twitter <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>.</p>
                         <p>
                             <div class="alert alert-warning" role="alert">
                                 <b>PGP-Verschlüsselung</b>
