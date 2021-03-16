@@ -33,3 +33,9 @@ div.tab-pane a:focus {
 	background-color: #BF6600;
 	border-color: #BF6600;
 }
+
+a.disabled {
+	pointer-events: none;
+	cursor: default;
+	text-decoration: line-through;
+}

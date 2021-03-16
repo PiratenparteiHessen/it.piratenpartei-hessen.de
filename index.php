@@ -88,7 +88,8 @@
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a id="todos" href="https://jira.piratenpartei-hessen.de/plugins/servlet/shareYourJira/showFilter?&token=abc75366-8b12-4e83-8e3a-3b41f3a3d48f&id=2" target="_blank">Todos <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a></li>
+                        <li><a id="webmail" href="https://webmail.piratenpartei-hessen.de" target="_blank">Webmail <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a></li>
+                        <li><a id="todos" class="disabled" href="https://jira.piratenpartei-hessen.de/plugins/servlet/shareYourJira/showFilter?&token=abc75366-8b12-4e83-8e3a-3b41f3a3d48f&id=2" target="_blank">Todos <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a></li>
                         <li id="kontakt-box" class="dropdown">
                             <a id="kontakt" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kontakt <span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -126,7 +127,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Willkommen bei der Hessen-IT der Piratenpartei Deutschland Landesverband Hessen</div>
                     <div class="panel-body">
-                        <p>Hier kannst Du <a href="#antraege">Anträge</a> stellen, dich über unsere offenen <a id="todos" href="https://jira.piratenpartei-hessen.de/plugins/servlet/shareYourJira/showFilter?&token=abc75366-8b12-4e83-8e3a-3b41f3a3d48f&id=2" target="_blank">Todos <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a> informieren oder mit uns <a href="#kontakt">Kontakt</a> aufnehmen.</p>
+                        <p>Hier kannst Du <a href="#antraege">Anträge</a> stellen, dich über unsere offenen <a id="todos" class="disabled" href="https://jira.piratenpartei-hessen.de/plugins/servlet/shareYourJira/showFilter?&token=abc75366-8b12-4e83-8e3a-3b41f3a3d48f&id=2" target="_blank">Todos <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a> informieren oder mit uns <a href="#kontakt">Kontakt</a> aufnehmen.</p>
                     </div>
                 </div>
             </div>
@@ -160,7 +161,7 @@
                                     <label for="antrag-email-email">Meine derzeitige E-Mail-Adresse</label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                        <input type="email" class="form-control" id="antrag-email-email" placeholder="E-Mail-Adresse" required>
+                                        <input type="email" pattern=".*@\w{2,}\.\w{2,}" class="form-control" id="antrag-email-email" placeholder="E-Mail-Adresse" required>
                                     </div>
                                     <div class="help-block with-errors"></div>
                                 </div>
@@ -250,7 +251,7 @@
                                     <label for="antrag-mailingliste-email">Meine derzeitige E-Mail-Adresse</label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                        <input type="email" class="form-control" id="antrag-mailingliste-email" placeholder="E-Mail-Adresse" required>
+                                        <input type="email" pattern=".*@\w{2,}\.\w{2,}" class="form-control" id="antrag-mailingliste-email" placeholder="E-Mail-Adresse" required>
                                     </div>
                                     <div class="help-block with-errors"></div>
                                 </div>
@@ -357,7 +358,7 @@
                                     <label for="antrag-mailinglisten-moderation-email">Meine derzeitige E-Mail-Adresse</label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                        <input type="email" class="form-control" id="antrag-mailinglisten-moderation-email" placeholder="E-Mail-Adresse" required>
+                                        <input type="email" pattern=".*@\w{2,}\.\w{2,}" class="form-control" id="antrag-mailinglisten-moderation-email" placeholder="E-Mail-Adresse" required>
                                     </div>
                                     <div class="help-block with-errors"></div>
                                 </div>
@@ -393,7 +394,7 @@
                                     <label for="antrag-mailinglisten-moderation-mod-email">Gewünschte Moderations-E-Mail-Adresse</label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                        <input type="email" class="form-control" id="antrag-mailinglisten-moderation-mod-email" placeholder="E-Mail-Adresse" required>
+                                        <input type="email" pattern=".*@\w{2,}\.\w{2,}" class="form-control" id="antrag-mailinglisten-moderation-mod-email" placeholder="E-Mail-Adresse" required>
                                     </div>
                                     <div class="help-block with-errors"></div>
                                 </div>
@@ -474,7 +475,7 @@
                                     <label for="antrag-mailinglisten-schreibrechte-email">Meine Listen-E-Mail-Adresse</label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                        <input type="email" class="form-control" id="antrag-mailinglisten-schreibrechte-email" placeholder="E-Mail-Adresse" required>
+                                        <input type="email" pattern=".*@\w{2,}\.\w{2,}" class="form-control" id="antrag-mailinglisten-schreibrechte-email" placeholder="E-Mail-Adresse" required>
                                     </div>
                                     <div class="help-block with-errors"></div>
                                 </div>
@@ -577,7 +578,7 @@
                                     <label for="antrag-owncloud-email">Meine @piratenpartei-hessen.de-E-Mail</label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                        <input type="email" class="form-control" id="antrag-owncloud-email" placeholder="E-Mail" required>
+                                        <input type="email" pattern=".*@\w{2,}\.\w{2,}" class="form-control" id="antrag-owncloud-email" placeholder="E-Mail" required>
                                     </div>
                                     <div class="help-block with-errors"></div>
                                 </div>
@@ -663,7 +664,7 @@
                                     <label for="kontakt-email-email">Meine derzeitige E-Mail-Adresse</label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                        <input type="email" class="form-control" id="kontakt-email-email" placeholder="E-Mail-Adresse" required>
+                                        <input type="email" pattern=".*@\w{2,}\.\w{2,}" class="form-control" id="kontakt-email-email" placeholder="E-Mail-Adresse" required>
                                     </div>
                                     <div class="help-block with-errors"></div>
                                 </div>
@@ -772,7 +773,7 @@
 
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="js/bootstrap.min.js"></script>
-        <script src="js/validator.js"></script>
+        <script src="js/validator.min.js"></script>
 
         <!-- krajee.com/file-input -->
         <script src="js/fileinput.min.js"></script>
