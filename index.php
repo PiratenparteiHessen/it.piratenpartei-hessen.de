@@ -25,7 +25,7 @@
     );
 
     // pattern
-    $pattern = '<? echo $pattern; ?>';
+    $pattern = '<?php echo $pattern; ?>';
     $pattern = '^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
 
 ?>
@@ -165,7 +165,7 @@
                                     <label for="antrag-email-email">Meine derzeitige E-Mail-Adresse</label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                        <input type="email" pattern="<? echo $pattern; ?>" class="form-control" id="antrag-email-email" placeholder="E-Mail-Adresse" required>
+                                        <input type="email" pattern="<?php echo $pattern; ?>" class="form-control" id="antrag-email-email" placeholder="E-Mail-Adresse" required>
                                     </div>
                                     <div class="help-block with-errors"></div>
                                 </div>
@@ -255,7 +255,7 @@
                                     <label for="antrag-mailingliste-email">Meine derzeitige E-Mail-Adresse</label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                        <input type="email" pattern="<? echo $pattern; ?>" class="form-control" id="antrag-mailingliste-email" placeholder="E-Mail-Adresse" required>
+                                        <input type="email" pattern="<?php echo $pattern; ?>" class="form-control" id="antrag-mailingliste-email" placeholder="E-Mail-Adresse" required>
                                     </div>
                                     <div class="help-block with-errors"></div>
                                 </div>
@@ -362,7 +362,7 @@
                                     <label for="antrag-mailinglisten-moderation-email">Meine derzeitige E-Mail-Adresse</label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                        <input type="email" pattern="<? echo $pattern; ?>" class="form-control" id="antrag-mailinglisten-moderation-email" placeholder="E-Mail-Adresse" required>
+                                        <input type="email" pattern="<?php echo $pattern; ?>" class="form-control" id="antrag-mailinglisten-moderation-email" placeholder="E-Mail-Adresse" required>
                                     </div>
                                     <div class="help-block with-errors"></div>
                                 </div>
@@ -398,7 +398,7 @@
                                     <label for="antrag-mailinglisten-moderation-mod-email">Gewünschte Moderations-E-Mail-Adresse</label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                        <input type="email" pattern="<? echo $pattern; ?>" class="form-control" id="antrag-mailinglisten-moderation-mod-email" placeholder="E-Mail-Adresse" required>
+                                        <input type="email" pattern="<?php echo $pattern; ?>" class="form-control" id="antrag-mailinglisten-moderation-mod-email" placeholder="E-Mail-Adresse" required>
                                     </div>
                                     <div class="help-block with-errors"></div>
                                 </div>
@@ -479,7 +479,7 @@
                                     <label for="antrag-mailinglisten-schreibrechte-email">Meine Listen-E-Mail-Adresse</label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                        <input type="email" pattern="<? echo $pattern; ?>" class="form-control" id="antrag-mailinglisten-schreibrechte-email" placeholder="E-Mail-Adresse" required>
+                                        <input type="email" pattern="<?php echo $pattern; ?>" class="form-control" id="antrag-mailinglisten-schreibrechte-email" placeholder="E-Mail-Adresse" required>
                                     </div>
                                     <div class="help-block with-errors"></div>
                                 </div>
@@ -582,7 +582,7 @@
                                     <label for="antrag-owncloud-email">Meine @piratenpartei-hessen.de-E-Mail</label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                        <input type="email" pattern="<? echo $pattern; ?>" class="form-control" id="antrag-owncloud-email" placeholder="E-Mail" required>
+                                        <input type="email" pattern="<?php echo $pattern; ?>" class="form-control" id="antrag-owncloud-email" placeholder="E-Mail" required>
                                     </div>
                                     <div class="help-block with-errors"></div>
                                 </div>
@@ -668,7 +668,7 @@
                                     <label for="kontakt-email-email">Meine derzeitige E-Mail-Adresse</label>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                        <input type="email" pattern="<? echo $pattern; ?>" class="form-control" id="kontakt-email-email" placeholder="E-Mail-Adresse" required>
+                                        <input type="email" pattern="<?php echo $pattern; ?>" class="form-control" id="kontakt-email-email" placeholder="E-Mail-Adresse" required>
                                     </div>
                                     <div class="help-block with-errors"></div>
                                 </div>
