@@ -96,7 +96,7 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li><a id="webmail" href="https://webmail.piratenpartei-hessen.de" target="_blank">Webmail <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a></li>
-                        <li><a id="todos" class="disabled" href="https://jira.piratenpartei-hessen.de/plugins/servlet/shareYourJira/showFilter?&token=abc75366-8b12-4e83-8e3a-3b41f3a3d48f&id=2" target="_blank">Todos <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a></li>
+                        <li><a id="todos" class="disabled_" href="https://jira.piratenpartei-hessen.de/plugins/servlet/shareYourJira/showFilter?&token=abc75366-8b12-4e83-8e3a-3b41f3a3d48f&id=2" target="_blank">Todos <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a></li>
                         <li id="kontakt-box" class="dropdown">
                             <a id="kontakt" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kontakt <span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -641,12 +641,12 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Kontakt zur Hessen-IT</div>
                     <div class="panel-body">
-                        <p>Uns erreichst du entweder über das nachfolgende Formular oder direkt per E-Mail unter <a href="mailto:it@piratenpartei-hessen.de">it@piratenpartei-hessen.de</a> (PGP: <a href="pgp/Piratenpartei_Hessen_IT_2021-2022_it@piratenpartei-hessen.de_(0xA32FD9D9A439617B)_pub.asc" target="_blank">ID 0xA32FD9D9A439617B</a>, Fingerprint 8C0A FF54 E6F5 6AD5 4C8C 8371 A32F D9D9 A439 617B) und <a href="https://twitter.com/HessenIT">Twitter <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>.</p>
+                        <p>Uns erreichst du entweder über das nachfolgende Formular oder direkt per E-Mail unter <a href="mailto:it@piratenpartei-hessen.de">it@piratenpartei-hessen.de</a> (PGP: <a href="pgp/Piratenpartei_Hessen_IT_2022-2023_it@piratenpartei-hessen.de_(0x4B2675C85A28B661) pub.asc" target="_blank">ID 0x4B2675C85A28B661</a>, Fingerprint 7B6C 8F3A C6C2 5AF8 BD98 E52B 4B26 75C8 5A28 B661) und <a href="https://twitter.com/HessenIT">Twitter <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>.</p>
                         <p>
                             <div class="alert alert-warning" role="alert">
                                 <b>PGP-Verschlüsselung</b>
                                 <p>Bitte beachte, daß weder das Ticketsystem noch der Webmailer mit der neuen Art der Header-Verschlüsselung (Betreff verschlüsseln / Memory Hole) umgehen können!</p>
-                                <p>Diese PGP-Variante ist auch nocht nicht wirklich <a href="https://www.privacy-handbuch.de/handbuch_32w.htm" target="_blank">standardisiert oder weit verbreitet <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>.</p>
+                                <p>Diese PGP-Variante ist auch noch nicht wirklich <a href="https://www.privacy-handbuch.de/handbuch_32w.htm" target="_blank">standardisiert oder weit verbreitet <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>.</p>
                             </div>
                         </p>
                         <p>
